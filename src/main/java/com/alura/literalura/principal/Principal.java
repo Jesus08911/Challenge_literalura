@@ -1,10 +1,16 @@
 package com.alura.literalura.principal;
 
 import com.alura.literalura.service.ProcesadorOpciones;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class Principal {
+
+    @Autowired
+    ProcesadorOpciones procesdoropciones;
 //
 
 //
@@ -29,7 +35,7 @@ public class Principal {
                 System.out.println("Opcion invalida elija un numero del menú:");
                 opcion = scanner.nextInt();
             }
-           ProcesadorOpciones procesdoropciones = new ProcesadorOpciones();
+
             procesdoropciones.proceasarOpcion(opcion);
 
         }

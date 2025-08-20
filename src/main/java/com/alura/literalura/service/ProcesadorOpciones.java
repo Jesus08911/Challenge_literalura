@@ -20,7 +20,7 @@ public class ProcesadorOpciones {
     private ConvierteDatos conversor = new ConvierteDatos();
     private static final String URL_BASE = "https://gutendex.com/books/?search=";
     private Scanner teclado = new Scanner(System.in);
-
+    
     @Autowired
     private AutorRepository autorRepository;
 
@@ -99,10 +99,21 @@ public class ProcesadorOpciones {
 
                 break;
             }
-            case 5:
+            case 5: {
                 System.out.println("opcion elegida " + opcion);
+                mostrarMenuIdiomas();
+                String idioma = teclado.nextLine();
+                List<Libro> librosByIdiomaList = libroRepository.findLibrosPorIdioma(idioma);
+                if (!librosByIdiomaList.isEmpty()) {
+                    for (Libro libro : librosByIdiomaList) {
+                        mostrarLibros(libro);
+                        System.out.println("\n");
+                    }
+                } else {
+                    System.out.println("No existen libros registrados con el idioma seleccionado");
+                }
                 break;
-
+            }
 
         }
 
@@ -150,6 +161,17 @@ public class ProcesadorOpciones {
                         "Fecha de fallecimiento: " + autor.getFechaFallecimiento().getYear() + "\n" +
                         "Libros: " + autor.getTitulosLibros().toString() + "\n" +
                         "-------------------------------------------- \n"
+        );
+    }
+
+    private void mostrarMenuIdiomas() {
+        System.out.println("""
+                Ingrese el idioma para buscar los libros:
+                es - español
+                en - ingles
+                fr - frances
+                pt - portugues                              
+                """ + "\n"
         );
     }
 }

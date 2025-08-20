@@ -39,26 +39,6 @@ public class Principal {
         while (opcion != 0);
         System.exit(0);
 
-
-
-
-
-//
-//        //Busqueda de libros por nombre
-//        System.out.println("Ingrese el nombre del libro que desea buscar");
-//        var tituloLibro = teclado.nextLine();
-//        json = consumoAPI.obtenerDatos(URL_BASE+"?search=" + tituloLibro.replace(" ","+"));
-//        var datosBusqueda = conversor.obtenerDatos(json, Datos.class);
-//        Optional<DatosLibros> libroBuscado = datosBusqueda.resultados().stream()
-//                .filter(l -> l.titulo().toUpperCase().contains(tituloLibro.toUpperCase()))
-//                .findFirst();
-//        if(libroBuscado.isPresent()){
-//            System.out.println("Libro Encontrado ");
-//            System.out.println(libroBuscado.get());
-//        }else {
-//            System.out.println("Libro no encontrado");
-//        }
-
     }
     private void mostrarMenu() {
         System.out.println(

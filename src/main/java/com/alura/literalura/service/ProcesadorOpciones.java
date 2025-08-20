@@ -54,15 +54,35 @@ public class ProcesadorOpciones {
                 libro = libroRepository.save(libro);
                 mostrarLibros(libro);
 
+                break;
+            }
+            case 2: {
+                System.out.println("opcion elegida " + opcion);
+                List<Libro> libroBdList = libroRepository.findAllWithAutor();
+                if (!libroBdList.isEmpty()) {
+                    for (Libro libro : libroBdList) {
+                        mostrarLibros(libro);
+                        System.out.println("\n");
+                    }
+                } else {
+                    System.out.println("No hay libros registrados aun");
+                }
 
                 break;
             }
-            case 2:
+            case 3: {
                 System.out.println("opcion elegida " + opcion);
+                List<Autor> autorBdList = autorRepository.findAllWithLibros();
+                if (!autorBdList.isEmpty()) {
+                    for (Autor autor : autorBdList) {
+                        mostrarAutores(autor);
+                        System.out.println("\n");
+                    }
+                } else {
+                    System.out.println("No hay autores registrados aun");
+                }
                 break;
-            case 3:
-                System.out.println("opcion elegida " + opcion);
-                break;
+            }
             case 4:
                 System.out.println("opcion elegida " + opcion);
                 break;
@@ -104,6 +124,18 @@ public class ProcesadorOpciones {
                         "Autor: " + libro.getAutor().getNombre() + "\n" +
                         "Idioma: " + libro.getIdioma() + "\n" +
                         "Numero de descargas: " + libro.getNumDescargas() + "\n" +
+                        "-------------------------------------------- \n"
+        );
+    }
+
+    private void mostrarAutores(Autor autor) {
+
+        System.out.println(
+                "------------------ AUTOR ------------------- \n" +
+                        "Nombre: " + autor.getNombre() + "\n" +
+                        "Fecha de nacimiento: " + autor.getFechaNacimiento().getYear() + "\n" +
+                        "Fecha de fallecimiento: " + autor.getFechaFallecimiento().getYear() + "\n" +
+                        "Libros: " + autor.getTitulosLibros().toString() + "\n" +
                         "-------------------------------------------- \n"
         );
     }

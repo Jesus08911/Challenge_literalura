@@ -11,10 +11,7 @@ public class Principal {
 
     @Autowired
     ProcesadorOpciones procesdoropciones;
-//
 
-//
-//
     public void muestraElMenu(){
         Scanner scanner = new Scanner(System.in);
         int opcion = 0;

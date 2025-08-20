@@ -83,9 +83,22 @@ public class ProcesadorOpciones {
                 }
                 break;
             }
-            case 4:
+            case 4: {
                 System.out.println("opcion elegida " + opcion);
+                System.out.println("Ingrese el año vivo del autor que desee buscar: ");
+                int year = teclado.nextInt();
+                List<Autor> autoresVivosYearList = autorRepository.findAutoresVivosEnAnio(year);
+                if (!autoresVivosYearList.isEmpty()) {
+                    for (Autor autor : autoresVivosYearList) {
+                        mostrarAutores(autor);
+                        System.out.println("\n");
+                    }
+                } else {
+                    System.out.println("No se encontraron autores vivos en el año especificado \n");
+                }
+
                 break;
+            }
             case 5:
                 System.out.println("opcion elegida " + opcion);
                 break;
